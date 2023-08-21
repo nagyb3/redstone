@@ -6,7 +6,7 @@ export default function Navbar() {
       className="flex h-[60px] items-center justify-between
      border-[1px] border-b-gray-400 px-8"
     >
-      <h1 className="w-fit">Redstone</h1>
+      <h1 className="w-fit font-bold">Redstone</h1>
       <ul className="flex items-center gap-8">
         <li>
           <a href="/login">Login</a>

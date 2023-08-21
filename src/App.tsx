@@ -15,7 +15,7 @@ function App() {
   });
 
   return (
-    <>
+    <div className="min-h-screen">
       <Router>
         <Navbar />
         <Routes>
@@ -23,7 +23,7 @@ function App() {
           <Route path="/timer" element={<Timer />} />
         </Routes>
       </Router>
-    </>
+    </div>
   );
 }
 
