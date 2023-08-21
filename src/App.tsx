@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Timer from "./components/Timer";
 import Navbar from "./components/Navbar";
+import Study from "./components/Study";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   useEffect(() => {
     document.title = "Redstone - The Ultimate Study Tool!";
   });
@@ -21,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/timer" element={<Timer />} />
+          <Route path="/study" element={<Study />} />
         </Routes>
       </Router>
     </div>
