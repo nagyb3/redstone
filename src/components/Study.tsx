@@ -24,14 +24,15 @@ export default function Study() {
     <div>
       <div className="flex h-[120px] items-center justify-around bg-gray-200 px-16">
         <a
-          className={`hover:bg-gray-300" href="/study/timer rounded p-3 ${
+          className={`rounded p-3 hover:bg-gray-300 ${
             selectedTool === "timer" ? "bg-gray-300" : undefined
           }`}
+          href="/study/timer"
         >
           Timer
         </a>
         <a
-          className={`hover:bg-gray-300" href="/study/timer rounded p-3 ${
+          className={`rounded p-3 hover:bg-gray-300 ${
             selectedTool === "timetracker" ? "bg-gray-300" : undefined
           }`}
           href="/study/timetracker"
@@ -39,7 +40,7 @@ export default function Study() {
           TimeTracker
         </a>
         <a
-          className={`hover:bg-gray-300" href="/study/timer rounded p-3 ${
+          className={`rounded p-3 hover:bg-gray-300 ${
             selectedTool === "flashcards" ? "bg-gray-300" : undefined
           }`}
           href="/study/flashcards"
