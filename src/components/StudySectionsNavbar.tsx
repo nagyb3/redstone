@@ -53,7 +53,6 @@ export default function StudySectionsNavbar({
           Flashcards
         </a>
       </div>
-      <main></main>
     </div>
   );
 }
