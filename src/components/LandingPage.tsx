@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function LandingPage() {
   return (
     <div>
@@ -16,7 +14,7 @@ export default function LandingPage() {
        font-medium text-white hover:bg-gray-800 focus:outline-none
         focus:ring-4 focus:ring-blue-300 dark:hover:bg-gray-800 dark:focus:ring-gray-400"
         >
-          <a href="/study">Start Studying!</a>
+          <a href="/study/timer">Start Studying!</a>
         </button>
       </div>
     </div>

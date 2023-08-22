@@ -1,10 +1,14 @@
-import { useState } from "react";
+type StudySectionsNavbarProps = {
+  setSelectedTool: React.Dispatch<
+    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
+  >;
+  selectedTool: null | "timer" | "timetracker" | "flashcards";
+};
 
-export default function Study() {
-  const [selectedTool, setSelectedTool] = useState<
-    null | "timer" | "timetracker" | "flashcards"
-  >(null);
-
+export default function StudySectionsNavbar({
+  selectedTool,
+  setSelectedTool,
+}: StudySectionsNavbarProps) {
   function handleFlashCards() {
     setSelectedTool("flashcards");
     document.location.href = "/study/flashcards";
