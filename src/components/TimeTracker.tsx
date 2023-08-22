@@ -39,8 +39,6 @@ export default function TimeTracker({
       .catch((error) => console.error(error));
   }
 
-  console.log(import.meta.env.VITE_API_URL);
-
   function handleTimeChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTimeState(Number(e.target.value));
   }

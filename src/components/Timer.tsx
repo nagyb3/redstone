@@ -15,6 +15,8 @@ export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
 
   const [timer, setTimer] = useState(1800); // 30 minutes in seconds
 
+  const [resetTo, setResetTo] = useState(1800);
+
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
@@ -61,7 +63,31 @@ export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
 
   function handleReset() {
     isRunning && setIsRunning(false);
-    setTimer(1800);
+    setTimer(resetTo);
+  }
+
+  function handleMinusOne() {
+    setIsRunning(false);
+    setResetTo((prev) => prev - 60);
+    setTimer((prev) => prev - 60);
+  }
+
+  function handleMinusFive() {
+    setIsRunning(false);
+    setResetTo((prev) => prev - 60 * 5);
+    setTimer((prev) => prev - 60 * 5);
+  }
+
+  function handlePlusFive() {
+    setIsRunning(false);
+    setResetTo((prev) => prev + 60 * 5);
+    setTimer((prev) => prev + 60 * 5);
+  }
+
+  function handlePlusOne() {
+    setIsRunning(false);
+    setResetTo((prev) => prev + 60);
+    setTimer((prev) => prev + 60);
   }
 
   return (
@@ -72,6 +98,32 @@ export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
       />
 
       <div className="mt-[20vh] flex flex-col items-center justify-center gap-8">
+        <div className="flex gap-4">
+          <button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+            onClick={handleMinusOne}
+          >
+            -1
+          </button>
+          <button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+            onClick={handleMinusFive}
+          >
+            -5
+          </button>
+          <button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+            onClick={handlePlusFive}
+          >
+            +5
+          </button>
+          <button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+            onClick={handlePlusOne}
+          >
+            +1
+          </button>
+        </div>
         <p className="text-9xl">
           {minutes.toString().padStart(2, "0")}:
           {seconds.toString().padStart(2, "0")}
