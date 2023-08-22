@@ -5,6 +5,7 @@ import Timer from "./components/Timer";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import TimeTracker from "./components/TimeTracker";
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,15 @@ function App() {
             path="/study/timer"
             element={
               <Timer
+                selectedTool={selectedTool}
+                setSelectedTool={setSelectedTool}
+              />
+            }
+          />
+          <Route
+            path="/study/timetracker"
+            element={
+              <TimeTracker
                 selectedTool={selectedTool}
                 setSelectedTool={setSelectedTool}
               />

@@ -2,7 +2,7 @@ export default function LandingPage() {
   return (
     <div>
       <div className="flex flex-col items-center">
-        <h1 className="mt-24 text-2xl md:text-4xl">
+        <h1 className="mt-24 px-4 text-center text-2xl md:text-4xl">
           All the tools to study at maximum efficiency.
         </h1>
         <p className="m-8 max-w-[500px] text-center text-gray-700">
