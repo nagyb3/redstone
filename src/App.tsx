@@ -18,10 +18,17 @@ function App() {
     null | "timer" | "timetracker" | "flashcards"
   >("timer");
 
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+    localStorage.getItem("token") !== null,
+  );
+
+  // console.log("isLoggedIn", isLoggedIn);
+  // console.log(localStorage.getItem("token"));
+
   return (
     <div className="min-h-screen">
       <Router>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route

@@ -16,7 +16,8 @@ export default function Login() {
     setPasswordState(e.target.value);
   }
 
-  function handleLogin() {
+  function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     fetch(`${import.meta.env.VITE_API_URL}/login`, {
       method: "POST",
       headers: {
@@ -31,7 +32,8 @@ export default function Login() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        localStorage.setItem("token", data.token);
+        window.location.href = "/study/timer";
       })
       .catch((error) => {
         console.error(error);
@@ -42,7 +44,10 @@ export default function Login() {
     <div>
       <div className="flex flex-col items-center">
         <h1 className="mt-8 text-xl font-bold">Login</h1>
-        <form className="mt-16 flex w-[50vw] flex-col items-center justify-center gap-8">
+        <form
+          className="mt-16 flex w-[50vw] flex-col items-center justify-center gap-8"
+          onSubmit={(e) => handleLogin(e)}
+        >
           <div>
             <label className="mr-4" htmlFor="username">
               Username:
@@ -75,7 +80,6 @@ export default function Login() {
             type="submit"
             value="Login"
             className="rounded border-[1px] border-black bg-blue-200 p-2"
-            onClick={handleLogin}
           />
         </form>
         <p className="mt-8">
