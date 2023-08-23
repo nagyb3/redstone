@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import TimeTracker from "./components/TimeTracker";
+import FlashCards from "./components/FlashCards";
+import CreateFlashCard from "./components/CreateFlashCard";
 
 function App() {
   useEffect(() => {
@@ -39,6 +41,19 @@ function App() {
                 setSelectedTool={setSelectedTool}
               />
             }
+          />
+          <Route
+            path="/study/flashcards"
+            element={
+              <FlashCards
+                selectedTool={selectedTool}
+                setSelectedTool={setSelectedTool}
+              />
+            }
+          />
+          <Route
+            path="/study/flashcards/create"
+            element={<CreateFlashCard />}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
