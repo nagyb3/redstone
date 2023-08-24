@@ -2,10 +2,12 @@ import React from "react";
 
 export default function CreateFlashCard() {
   const [packState, setPackState] = React.useState<(string | undefined)[][]>([
-    [undefined, undefined],
+    ["", ""],
   ]);
 
   const [cardsInPack, setCardsInPack] = React.useState<number>(1);
+
+  const [nameState, setNameState] = React.useState<string>("");
 
   function handleAddExtraCard() {
     setCardsInPack((prev) => prev + 1);
@@ -28,7 +30,7 @@ export default function CreateFlashCard() {
       body: JSON.stringify({
         username: localStorage.getItem("username"),
         pack_state: packState,
-        name: "sample name",
+        name: nameState,
       }),
     })
       .then((response) => {})
@@ -56,6 +58,10 @@ export default function CreateFlashCard() {
     setPackState(newPackState);
   }
 
+  function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setNameState(e.target.value);
+  }
+
   return (
     <div>
       <button className="m-4 underline">
@@ -64,6 +70,20 @@ export default function CreateFlashCard() {
       <h1 className="m-8 text-center text-xl font-bold">
         Create a flash card pack
       </h1>
+      <div className="mb-8 flex items-center justify-center gap-4">
+        <label htmlFor="pack-name" className="text-lg">
+          Name of the pack:
+        </label>
+        <input
+          className="border-[1px] border-black p-2"
+          type="text"
+          name="pack-name"
+          id="pack-name"
+          placeholder="Enter name for the pack..."
+          onChange={(e) => handleNameChange(e)}
+          value={nameState}
+        />
+      </div>
       <div className="grid grid-cols-2 justify-items-center">
         <div className="flex flex-col items-center gap-4">
           <p className="m-4 text-xl font-bold">First Side</p>
