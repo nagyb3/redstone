@@ -33,6 +33,7 @@ export default function Login() {
       })
       .then((data) => {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("username", String(usernameState));
         window.location.href = "/study/timer";
       })
       .catch((error) => {

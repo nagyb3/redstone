@@ -55,6 +55,7 @@ function App() {
               <FlashCards
                 selectedTool={selectedTool}
                 setSelectedTool={setSelectedTool}
+                isLoggedIn={isLoggedIn}
               />
             }
           />

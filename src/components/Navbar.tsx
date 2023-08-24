@@ -6,6 +6,7 @@ type NavBarProps = {
 export default function Navbar({ isLoggedIn, setIsLoggedIn }: NavBarProps) {
   function handleLogout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
     window.location.reload();
   }
 

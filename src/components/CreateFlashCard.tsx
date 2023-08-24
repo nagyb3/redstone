@@ -1,4 +1,4 @@
-import React, { HtmlHTMLAttributes, useDebugValue } from "react";
+import React from "react";
 
 export default function CreateFlashCard() {
   const [packState, setPackState] = React.useState<(string | undefined)[][]>([
@@ -20,19 +20,19 @@ export default function CreateFlashCard() {
   }
 
   function handleSubmit() {
-    fetch(`${import.meta.env.VITE_API_URL}/flashcards/create`, {
+    fetch(`${import.meta.env.VITE_API_URL}/flashcards/packs/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        username: localStorage.getItem("username"),
+        pack_state: packState,
+        name: "sample name",
+      }),
     })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
+      .then((response) => {})
+      .then((data) => {})
       .catch((error) => console.error(error));
   }
 
