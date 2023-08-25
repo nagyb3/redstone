@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import TimeTracker from "./components/TimeTracker";
 import FlashCards from "./components/FlashCards";
 import CreateFlashCard from "./components/CreateFlashCard";
+import TimeTrackerStats from "./components/TimeTrackerStats";
 
 function App() {
   useEffect(() => {
@@ -44,6 +45,15 @@ function App() {
             path="/study/timetracker"
             element={
               <TimeTracker
+                selectedTool={selectedTool}
+                setSelectedTool={setSelectedTool}
+              />
+            }
+          />
+          <Route
+            path="/study/timetracker/stats"
+            element={
+              <TimeTrackerStats
                 selectedTool={selectedTool}
                 setSelectedTool={setSelectedTool}
               />

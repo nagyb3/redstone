@@ -52,6 +52,11 @@ export default function TimeTracker({
         setSelectedTool={setSelectedTool}
       />
       <h1 className="font-sembol mt-8 text-center text-xl">TimeTracker</h1>
+      <div className="flex justify-center">
+        <button className="mt-4 underline">
+          <a href="/study/timetracker/stats">Show Stats! -&gt;</a>
+        </button>
+      </div>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="mt-16 flex flex-col items-center gap-8"
