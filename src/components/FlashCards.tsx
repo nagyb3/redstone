@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
 
 type FlashCardsProps = {
@@ -9,11 +9,23 @@ type FlashCardsProps = {
   isLoggedIn: boolean;
 };
 
+type FlashCardPacksType = {
+  name: string;
+  pack_state: string[][];
+  userid: string;
+  __v: number;
+  _id: string;
+};
+
 export default function FlashCards({
   selectedTool,
   setSelectedTool,
   isLoggedIn,
 }: FlashCardsProps) {
+  const [thisUserFlashCardPacks, setThisUserFlashCardPacks] = useState<
+    undefined | FlashCardPacksType[]
+  >();
+
   useEffect(() => {
     setSelectedTool("flashcards");
     //based on username!!
@@ -26,7 +38,9 @@ export default function FlashCards({
         .then((response) => {
           return response.json();
         })
-        .then((data) => console.log(data))
+        .then((data) => {
+          setThisUserFlashCardPacks(data.flashcard_packs_for_user);
+        })
         .catch((error) => console.error(error));
     }
   });
@@ -42,7 +56,26 @@ export default function FlashCards({
         {isLoggedIn ? (
           <div>
             <p className="m-8">Your packs:</p>
-            <button className=" rounded bg-black p-2 text-white">
+            {thisUserFlashCardPacks !== undefined ? (
+              <ul className="list-disc">
+                {thisUserFlashCardPacks.map((flashCardPack) => {
+                  return (
+                    <li key={flashCardPack._id} className="underline">
+                      <a
+                        href={
+                          "/study/flashcards/packs?packid=" + flashCardPack._id
+                        }
+                      >
+                        {flashCardPack.name}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p>You don&apos;t you have any packs yet!</p>
+            )}
+            <button className="mt-12 rounded bg-black p-2 text-white">
               <a href="/study/flashcards/create">Make a new pack</a>
             </button>
           </div>

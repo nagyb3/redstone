@@ -9,6 +9,7 @@ import TimeTracker from "./components/TimeTracker";
 import FlashCards from "./components/FlashCards";
 import CreateFlashCard from "./components/CreateFlashCard";
 import TimeTrackerStats from "./components/TimeTrackerStats";
+import InspectFlashCardPack from "./components/InspectFlashCardPack";
 
 function App() {
   useEffect(() => {
@@ -72,6 +73,15 @@ function App() {
           <Route
             path="/study/flashcards/create"
             element={<CreateFlashCard />}
+          />
+          <Route
+            path="/study/flashcards/packs"
+            element={
+              <InspectFlashCardPack
+                selectedTool={selectedTool}
+                setSelectedTool={setSelectedTool}
+              />
+            }
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
