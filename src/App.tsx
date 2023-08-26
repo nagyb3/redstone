@@ -37,6 +37,7 @@ function App() {
             path="/study/timer"
             element={
               <Timer
+                isLoggedIn={isLoggedIn}
                 selectedTool={selectedTool}
                 setSelectedTool={setSelectedTool}
               />

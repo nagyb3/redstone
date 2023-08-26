@@ -1,25 +1,43 @@
 import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
+import FlashCards from "./FlashCards";
 
 type TimerProps = {
   setSelectedTool: React.Dispatch<
     React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
   >;
   selectedTool: null | "timer" | "timetracker" | "flashcards";
+  isLoggedIn: boolean;
 };
 
-export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
+export default function Timer({
+  selectedTool,
+  setSelectedTool,
+  isLoggedIn,
+}: TimerProps) {
   useEffect(() => {
     setSelectedTool("timer");
   }, []);
 
-  const [timer, setTimer] = useState(1800); // 30 minutes in seconds
+  const [timer, setTimer] = useState(2); // 30 minutes in seconds
 
   const [resetTo, setResetTo] = useState(1800);
 
   const [isRunning, setIsRunning] = useState(false);
 
+  const [showSubmitToTracked, setShowSubmitToTracked] = useState(false);
+
+  const [showSubmittedMessage, setShowSubmittedMessage] = useState(false);
+
   useEffect(() => {
+    if (isRunning) {
+      if (showSubmittedMessage) {
+        setShowSubmittedMessage(false);
+      }
+      if (showSubmitToTracked) {
+        setShowSubmitToTracked(false);
+      }
+    }
     let interval: number;
     if (isRunning) {
       interval = setInterval(() => {
@@ -31,6 +49,7 @@ export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
 
   useEffect(() => {
     if (timer === 0) {
+      setShowSubmitToTracked(true);
       setIsRunning(false);
     }
   }, [timer]);
@@ -42,28 +61,10 @@ export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
     setIsRunning(!isRunning);
   };
 
-  // function handleMinuteChange() {
-  //   let hours = 0;
-  //   let minutes = 0;
-  //   let newAmount = prompt("");
-  //   if (newAmount === null) {
-  //     newAmount = "3000";
-  //   }
-  //   newAmount = [...newAmount];
-  //   let seconds = parseInt(newAmount.splice(newAmount.length - 2, 2).join(""));
-  //   if (newAmount.length > 0) {
-  //     minutes = parseInt(newAmount.splice(newAmount.length - 2, 2).join(""));
-  //   }
-  //   if (newAmount.length > 0) {
-  //     hours = parseInt(newAmount.join(""));
-  //   }
-  //   console.log(hours, minutes, seconds);
-  //   setTimer(hours * 3600 + minutes * 60 + seconds);
-  // }
-
   function handleReset() {
     isRunning && setIsRunning(false);
     setTimer(resetTo);
+    setShowSubmitToTracked(false);
   }
 
   function handleMinusOne() {
@@ -89,6 +90,26 @@ export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
     setResetTo((prev) => prev + 60);
     setTimer((prev) => prev + 60);
   }
+
+  const handleAddToTracked = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/timetracker`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          time: resetTo / 60,
+        }),
+      },
+    );
+    if (response.status === 200) {
+      setShowSubmitToTracked(false);
+      setShowSubmittedMessage(true);
+    }
+  };
 
   return (
     <div className="min-h-[calc(100vh-70px)]">
@@ -142,6 +163,19 @@ export default function Timer({ selectedTool, setSelectedTool }: TimerProps) {
             RESET
           </button>
         </div>
+        {showSubmitToTracked && isLoggedIn ? (
+          <button
+            onClick={handleAddToTracked}
+            className="mt-4 rounded bg-green-400 p-2 text-2xl underline"
+          >
+            Add to tracked times!
+          </button>
+        ) : undefined}
+        {showSubmittedMessage ? (
+          <p className="mt-4 text-xl font-bold text-green-700">
+            Time successfully submitted!
+          </p>
+        ) : undefined}
       </div>
     </div>
   );

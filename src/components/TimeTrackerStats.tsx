@@ -112,12 +112,16 @@ export default function TimeTrackerStats({
         </span>
       </p>
       <p className="mt-8 text-center font-bold">
-        Minutes today :{" "}
-        {trackedTimesForUser !== undefined ? todayMinutes : undefined}
+        Today:{" "}
+        {trackedTimesForUser !== undefined
+          ? todayMinutes + " minutes"
+          : undefined}
       </p>
       <p className="mt-8 text-center font-bold">
-        This Month :{" "}
-        {trackedTimesForUser !== undefined ? thisMonthMinutes : undefined}
+        This Month:{" "}
+        {trackedTimesForUser !== undefined
+          ? thisMonthMinutes + " minutes"
+          : undefined}
       </p>
     </div>
   );
