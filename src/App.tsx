@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <Router>
+      <Router basename="/">
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
           <Route path="/" element={<LandingPage />} />
