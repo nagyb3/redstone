@@ -3,7 +3,7 @@ type NavBarProps = {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Navbar({ isLoggedIn, setIsLoggedIn }: NavBarProps) {
+export default function Navbar({ isLoggedIn }: NavBarProps) {
   function handleLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");

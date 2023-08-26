@@ -14,15 +14,15 @@ export default function StudySectionsNavbar({
     document.location.href = "/study/flashcards";
   }
 
-  function handleTimer() {
-    setSelectedTool("timer");
-    document.location.href = "/study/timer";
-  }
+  // function handleTimer() {
+  //   setSelectedTool("timer");
+  //   document.location.href = "/study/timer";
+  // }
 
-  function handleTimeTracker() {
-    setSelectedTool("timetracker");
-    document.location.href = "/study/timer";
-  }
+  // function handleTimeTracker() {
+  //   setSelectedTool("timetracker");
+  //   document.location.href = "/study/timer";
+  // }
 
   return (
     <div>

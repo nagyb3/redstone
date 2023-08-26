@@ -32,10 +32,7 @@ export default function CreateFlashCard() {
         pack_state: packState,
         name: nameState,
       }),
-    })
-      .then((response) => {})
-      .then((data) => {})
-      .catch((error) => console.error(error));
+    }).catch((error) => console.error(error));
   }
 
   function handleInputChange(
