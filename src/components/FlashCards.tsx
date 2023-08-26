@@ -23,8 +23,8 @@ export default function FlashCards({
   isLoggedIn,
 }: FlashCardsProps) {
   const [thisUserFlashCardPacks, setThisUserFlashCardPacks] = useState<
-    undefined | FlashCardPacksType[]
-  >();
+    FlashCardPacksType[]
+  >([]);
 
   useEffect(() => {
     setSelectedTool("flashcards");
@@ -43,7 +43,7 @@ export default function FlashCards({
         })
         .catch((error) => console.error(error));
     }
-  });
+  }, []);
 
   return (
     <div>
@@ -54,9 +54,9 @@ export default function FlashCards({
       <div className="flex flex-col items-center">
         <h1 className="mt-8 text-center text-2xl">Flash cards</h1>
         {isLoggedIn ? (
-          <div>
+          <div className="flex flex-col items-center">
             <p className="m-8">Your packs:</p>
-            {thisUserFlashCardPacks !== undefined ? (
+            {thisUserFlashCardPacks?.length !== 0 ? (
               <ul className="list-disc">
                 {thisUserFlashCardPacks.map((flashCardPack) => {
                   return (
@@ -73,7 +73,9 @@ export default function FlashCards({
                 })}
               </ul>
             ) : (
-              <p>You don&apos;t you have any packs yet!</p>
+              <p className="font-bold">
+                You don&apos;t you have any packs yet!
+              </p>
             )}
             <button className="mt-12 rounded bg-black p-2 text-white">
               <a href="/study/flashcards/create">Make a new pack</a>

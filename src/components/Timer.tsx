@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
-import FlashCards from "./FlashCards";
 
 type TimerProps = {
   setSelectedTool: React.Dispatch<

@@ -12,9 +12,9 @@ import TimeTrackerStats from "./components/TimeTrackerStats";
 import InspectFlashCardPack from "./components/InspectFlashCardPack";
 
 function App() {
-  useEffect(() => {
-    document.title = "Redstone - The Ultimate Study Tool!";
-  });
+  // useEffect(() => {
+  //   document.title = "Redstone - The Ultimate Study Tool!";
+  // });
 
   const [selectedTool, setSelectedTool] = useState<
     null | "timer" | "timetracker" | "flashcards"
@@ -23,9 +23,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
     localStorage.getItem("token") !== null,
   );
-
-  // console.log("isLoggedIn", isLoggedIn);
-  // console.log(localStorage.getItem("token"));
 
   return (
     <div className="min-h-screen">
