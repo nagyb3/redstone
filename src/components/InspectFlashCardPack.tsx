@@ -20,7 +20,7 @@ export default function InspectFlashCardPack({
   selectedTool,
   setSelectedTool,
 }: InspectFlashCardProps) {
-  const [packState, setPackState] = useState<FlashCardPacksType | undefined>(
+  const [thisPack, setThisPack] = useState<FlashCardPacksType | undefined>(
     undefined,
   );
 
@@ -33,12 +33,14 @@ export default function InspectFlashCardPack({
         return response.json();
       })
       .then((data) => {
-        setPackState(data.pack);
+        setThisPack(data.pack);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
+
+  console.log(thisPack?.pack_state);
 
   return (
     <div>
@@ -51,14 +53,23 @@ export default function InspectFlashCardPack({
           &lt;- Go back to see all of the flashcard packs !
         </a>
       </button>
-      {packState !== undefined ? (
+      {thisPack !== undefined ? (
         <div>
           <p className="m-8 text-center text-xl">
-            Name of the pack:{" "}
-            <span className="font-bold">{packState.name}</span>
+            Name of the pack: <span className="font-bold">{thisPack.name}</span>
           </p>
         </div>
       ) : undefined}
+      <div className="mt-24 flex justify-center gap-8">
+        <button className="rounded bg-blue-700 p-2 text-2xl text-white">
+          <a href={"/study/flashcards/packs/edit?packid=" + thisPack?._id}>
+            Edit this pack
+          </a>
+        </button>
+        <button className="rounded bg-blue-700 p-2 text-2xl text-white">
+          Use cards to study
+        </button>
+      </div>
     </div>
   );
 }

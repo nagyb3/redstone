@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export default function CreateFlashCard() {
+type EditFlashCardProps = {
+  setSelectedTool: React.Dispatch<
+    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
+  >;
+  selectedTool: null | "timer" | "timetracker" | "flashcards";
+};
+
+export default function EditFlashCard({ setSelectedTool }: EditFlashCardProps) {
+  useEffect(() => {
+    setSelectedTool("flashcards");
+    let params = new URLSearchParams(document.location.search);
+    let packId = params.get("packid");
+    if (typeof packId === "string") {
+      setPackIdState(packId);
+    }
+    fetch(`${import.meta.env.VITE_API_URL}/flashcards/packs/${packId}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setNameState(data.pack.name);
+        setPackState(data.pack.pack_state);
+        setCardsInPack(data.pack.pack_state.length);
+      })
+      .catch((error) => {
+        console.error(console.error);
+      });
+  }, []);
+
   const [packState, setPackState] = React.useState<(string | undefined)[][]>([
     ["", ""],
   ]);
@@ -8,6 +36,10 @@ export default function CreateFlashCard() {
   const [cardsInPack, setCardsInPack] = React.useState<number>(1);
 
   const [nameState, setNameState] = React.useState<string>("");
+
+  const [packIdState, setPackIdState] = React.useState<undefined | string>(
+    undefined,
+  );
 
   function handleAddExtraCard() {
     setCardsInPack((prev) => prev + 1);
@@ -21,9 +53,9 @@ export default function CreateFlashCard() {
     }
   }
 
-  function handleSubmit() {
-    fetch(`${import.meta.env.VITE_API_URL}/flashcards/packs/create`, {
-      method: "POST",
+  function handleSubmitEdit() {
+    fetch(`${import.meta.env.VITE_API_URL}/flashcards/packs/${packIdState}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -132,9 +164,9 @@ export default function CreateFlashCard() {
         </button>
         <button
           className="rounded bg-blue-700 p-4 text-white"
-          onClick={handleSubmit}
+          onClick={handleSubmitEdit}
         >
-          SUBMIT
+          Submit Edit
         </button>
       </div>
     </div>

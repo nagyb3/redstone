@@ -33,6 +33,7 @@ export default function TimeTrackerStats({
   );
 
   useEffect(() => {
+    setSelectedTool("timetracker");
     fetch(
       `${
         import.meta.env.VITE_API_URL
