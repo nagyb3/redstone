@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
 
-type InspectFlashCardProps = {
+type StudyPackProps = {
   setSelectedTool: React.Dispatch<
     React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
   >;
@@ -16,11 +16,15 @@ type FlashCardPacksType = {
   _id: string;
 };
 
-export default function InspectFlashCardPack({
+export default function StudyPack({
   selectedTool,
   setSelectedTool,
-}: InspectFlashCardProps) {
+}: StudyPackProps) {
   const [thisPack, setThisPack] = useState<FlashCardPacksType | undefined>(
+    undefined,
+  );
+
+  const [currentCard, setCurrentCard] = useState<string[] | undefined>(
     undefined,
   );
 
@@ -40,38 +44,33 @@ export default function InspectFlashCardPack({
       });
   }, []);
 
-  console.log(thisPack);
+  useEffect(() => {
+    randomCard();
+  }, [thisPack]);
+
+  function randomCard() {
+    setCurrentCard(
+      thisPack?.pack_state[
+        Math.floor(Math.random() * thisPack?.pack_state.length)
+      ],
+    );
+  }
+
+  function handleRotateCard() {
+    //
+  }
 
   return (
     <div>
       <StudySectionsNavbar
-        selectedTool={selectedTool}
         setSelectedTool={setSelectedTool}
+        selectedTool={selectedTool}
       />
-      <button className="m-4 underline">
-        <a href="/study/flashcards">
-          &lt;- Go back to see all of the flashcard packs !
-        </a>
-      </button>
-      {thisPack !== undefined ? (
-        <div>
-          <p className="m-8 text-center text-xl">
-            Name of the pack: <span className="font-bold">{thisPack.name}</span>
-          </p>
+      {currentCard ? (
+        <div id="card" className="">
+          {currentCard[0]}
         </div>
       ) : undefined}
-      <div className="mt-24 flex justify-center gap-8">
-        <button className="rounded bg-blue-700 p-2 text-2xl text-white">
-          <a href={"/study/flashcards/packs/edit?packid=" + thisPack?._id}>
-            Edit this pack
-          </a>
-        </button>
-        <button className="rounded bg-blue-700 p-2 text-2xl text-white">
-          <a href={"/study/flashcards/packs/use?packid=" + thisPack?._id}>
-            Study this pack
-          </a>
-        </button>
-      </div>
     </div>
   );
 }

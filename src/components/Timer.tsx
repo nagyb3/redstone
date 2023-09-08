@@ -18,7 +18,7 @@ export default function Timer({
     setSelectedTool("timer");
   }, []);
 
-  const [timer, setTimer] = useState(2); // 30 minutes in seconds
+  const [timer, setTimer] = useState(1800); // 30 minutes in seconds
 
   const [resetTo, setResetTo] = useState(1800);
 

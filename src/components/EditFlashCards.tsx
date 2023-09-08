@@ -25,7 +25,7 @@ export default function EditFlashCard({ setSelectedTool }: EditFlashCardProps) {
         setCardsInPack(data.pack.pack_state.length);
       })
       .catch((error) => {
-        console.error(console.error);
+        console.error(error);
       });
   }, []);
 
