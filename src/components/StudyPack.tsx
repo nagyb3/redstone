@@ -49,16 +49,28 @@ export default function StudyPack({
   }, [thisPack]);
 
   function randomCard() {
-    setCurrentCard(
-      thisPack?.pack_state[
-        Math.floor(Math.random() * thisPack?.pack_state.length)
-      ],
-    );
+    if (thisPack?.pack_state !== undefined && thisPack?.pack_state.length > 1) {
+      let newRandom = currentCard;
+      while (newRandom === currentCard) {
+        newRandom =
+          thisPack?.pack_state[
+            Math.floor(Math.random() * thisPack?.pack_state.length)
+          ];
+      }
+      setCurrentCard(newRandom);
+    }
   }
 
   function handleRotateCard() {
-    //
+    setIsAnswerRevealed((prev) => !prev);
   }
+
+  function handleNextCard() {
+    randomCard();
+  }
+
+  const [isAnswerRevealed, setIsAnswerRevealed] =
+    React.useState<boolean>(false);
 
   return (
     <div>
@@ -67,8 +79,27 @@ export default function StudyPack({
         selectedTool={selectedTool}
       />
       {currentCard ? (
-        <div id="card" className="">
-          {currentCard[0]}
+        <div className="flex h-[calc(100vh-180px)] flex-col items-center justify-center gap-4">
+          <div
+            id="card"
+            className="border-[1px] border-black bg-gray-400 px-16 py-8 text-3xl"
+          >
+            {isAnswerRevealed ? currentCard[0] : currentCard[1]}
+          </div>
+          <div className="flex gap-4">
+            <button
+              className="rounded bg-black p-3 text-white"
+              onClick={handleRotateCard}
+            >
+              ROTATE CARD
+            </button>
+            <button
+              className="rounded bg-black p-3 text-white"
+              onClick={handleNextCard}
+            >
+              NEXT CARD
+            </button>
+          </div>
         </div>
       ) : undefined}
     </div>
