@@ -144,7 +144,7 @@ export default function Timer({
             +1
           </button>
         </div>
-        <p className="text-9xl">
+        <p className="text-8xl sm:text-9xl">
           {minutes.toString().padStart(2, "0")}:
           {seconds.toString().padStart(2, "0")}
         </p>

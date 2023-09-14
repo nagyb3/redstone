@@ -13,12 +13,12 @@ export default function Navbar({ isLoggedIn }: NavBarProps) {
   return (
     <div
       className="flex h-[60px] items-center justify-between
-     border-[1px] border-b-gray-400 px-8"
+     border-[1px] border-b-gray-400 px-4 sm:px-8"
     >
       <h1 className="w-fit font-bold">
         <a href="/">Redstone</a>
       </h1>
-      <ul className="flex items-center gap-8">
+      <ul className="flex items-center gap-4 sm:gap-8">
         {!isLoggedIn ? (
           <li>
             <a href="/login">Login</a>

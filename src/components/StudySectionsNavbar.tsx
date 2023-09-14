@@ -26,7 +26,7 @@ export default function StudySectionsNavbar({
 
   return (
     <div>
-      <div className="flex h-[120px] items-center justify-around bg-gray-200 px-16">
+      <div className="flex h-[120px] items-center justify-around gap-[5px] bg-gray-200 px-4 sm:px-16">
         <a
           className={`rounded p-3 hover:bg-gray-300 ${
             selectedTool === "timer" ? "bg-gray-300" : undefined
