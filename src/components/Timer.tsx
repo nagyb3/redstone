@@ -67,27 +67,35 @@ export default function Timer({
   }
 
   function handleMinusOne() {
-    setIsRunning(false);
-    setResetTo((prev) => prev - 60);
-    setTimer((prev) => prev - 60);
+    if (!showSubmitToTracked) {
+      setIsRunning(false);
+      setResetTo((prev) => prev - 60);
+      setTimer((prev) => prev - 60);
+    }
   }
 
   function handleMinusFive() {
-    setIsRunning(false);
-    setResetTo((prev) => prev - 60 * 5);
-    setTimer((prev) => prev - 60 * 5);
+    if (!showSubmitToTracked) {
+      setIsRunning(false);
+      setResetTo((prev) => prev - 60 * 5);
+      setTimer((prev) => prev - 60 * 5);
+    }
   }
 
   function handlePlusFive() {
-    setIsRunning(false);
-    setResetTo((prev) => prev + 60 * 5);
-    setTimer((prev) => prev + 60 * 5);
+    if (!showSubmitToTracked) {
+      setIsRunning(false);
+      setResetTo((prev) => prev + 60 * 5);
+      setTimer((prev) => prev + 60 * 5);
+    }
   }
 
   function handlePlusOne() {
-    setIsRunning(false);
-    setResetTo((prev) => prev + 60);
-    setTimer((prev) => prev + 60);
+    if (!showSubmitToTracked) {
+      setIsRunning(false);
+      setResetTo((prev) => prev + 60);
+      setTimer((prev) => prev + 60);
+    }
   }
 
   const handleAddToTracked = async () => {
@@ -117,7 +125,11 @@ export default function Timer({
         setSelectedTool={setSelectedTool}
       />
 
-      <div className="mt-[20vh] flex flex-col items-center justify-center gap-8">
+      <div
+        className={`flex h-[calc(100vh-180px)] flex-col items-center justify-center gap-8 transition-[background-color] duration-500 ${
+          isRunning ? "bg-blue-300" : undefined
+        } ${showSubmitToTracked ? "bg-orange-300" : undefined}`}
+      >
         <div className="flex gap-4">
           <button
             className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
@@ -165,7 +177,7 @@ export default function Timer({
         {showSubmitToTracked && isLoggedIn ? (
           <button
             onClick={handleAddToTracked}
-            className="mt-4 rounded bg-green-400 p-2 text-2xl underline"
+            className="mt-4 rounded bg-orange-800 p-2 text-2xl text-white underline"
           >
             Add to tracked times!
           </button>
