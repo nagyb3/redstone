@@ -27,7 +27,7 @@ function App() {
   );
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen font-sans">
       <Router basename="/">
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>

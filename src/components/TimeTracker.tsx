@@ -51,38 +51,46 @@ export default function TimeTracker({
         selectedTool={selectedTool}
         setSelectedTool={setSelectedTool}
       />
-      <h1 className="font-sembol mt-8 text-center text-xl">TimeTracker</h1>
+      <h1 className="font-sembol m-16 text-center text-2xl">TimeTracker</h1>
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="flex flex-col items-center gap-8"
+      >
+        <div>
+          <label
+            className="mr-4 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            htmlFor="number"
+          >
+            Enter minutes:{" "}
+          </label>
+          <div className="flex items-center justify-center gap-8">
+            <input
+              type="number"
+              name="number"
+              id="number"
+              min="1"
+              placeholder="Enter minutes..."
+              className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex
+            h-10 w-full rounded border-[1px] border-black p-1 px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              value={timeState}
+              onChange={(e) => handleTimeChange(e)}
+            />
+            <input
+              type="submit"
+              value="SUBMIT"
+              className="text-kg rounded border-[1px] border-black bg-blue-700 p-2 text-white"
+            />
+          </div>
+        </div>
+        <p className="mb-8 text-center font-bold text-green-700">
+          {isSuccess && "Time has been submitted successfully!"}
+        </p>
+      </form>
       <div className="flex justify-center">
         <button className="mt-4 underline">
           <a href="/study/timetracker/stats">Show Stats! -&gt;</a>
         </button>
       </div>
-      <form
-        onSubmit={(e) => handleSubmit(e)}
-        className="mt-16 flex flex-col items-center gap-8"
-      >
-        <div>
-          <label htmlFor="number">Enter minutes: </label>
-          <input
-            type="number"
-            name="number"
-            id="number"
-            min="1"
-            placeholder="Enter minutes..."
-            className="rounded border-[1px] border-black p-1"
-            value={timeState}
-            onChange={(e) => handleTimeChange(e)}
-          />
-        </div>
-        <input
-          type="submit"
-          value="SUBMIT"
-          className="rounded border-[1px] border-black bg-blue-800 p-2 text-xl text-white"
-        />
-        <p className="mb-8 text-center font-bold text-green-700">
-          {isSuccess && "Time has been submitted successfully!"}
-        </p>
-      </form>
     </div>
   );
 }

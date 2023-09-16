@@ -126,9 +126,9 @@ export default function Timer({
       />
 
       <div
-        className={`flex h-[calc(100vh-180px)] flex-col items-center justify-center gap-8 transition-[background-color] duration-500 ${
-          isRunning ? "bg-blue-300" : undefined
-        } ${showSubmitToTracked ? "bg-orange-300" : undefined}`}
+        className={`flex h-[calc(100vh-180px)] flex-col items-center justify-center gap-8 pb-16 transition-[background-color] duration-500 ${
+          isRunning ? "bg-blue-200" : undefined
+        } ${showSubmitToTracked ? "bg-orange-200" : undefined}`}
       >
         <div className="flex gap-4">
           <button

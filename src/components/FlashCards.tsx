@@ -52,15 +52,15 @@ export default function FlashCards({
         setSelectedTool={setSelectedTool}
       />
       <div className="flex flex-col items-center">
-        <h1 className="mt-8 text-center text-2xl">Flash cards</h1>
+        {/* <h1 className="mt-8 text-center text-2xl">Flash cards</h1> */}
         {isLoggedIn ? (
           <div className="flex flex-col items-center">
-            <p className="m-8">Your packs:</p>
+            <p className="m-8 mt-16 text-2xl">Your flashcard packs:</p>
             {thisUserFlashCardPacks?.length !== 0 ? (
-              <ul className="list-disc">
+              <ul className="flex list-disc flex-col gap-2">
                 {thisUserFlashCardPacks.map((flashCardPack) => {
                   return (
-                    <li key={flashCardPack._id} className="underline">
+                    <li key={flashCardPack._id} className="hover:underline">
                       <a
                         href={
                           "/study/flashcards/packs?packid=" + flashCardPack._id
