@@ -1,8 +1,8 @@
 type StudySectionsNavbarProps = {
   setSelectedTool: React.Dispatch<
-    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
+    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null | "todo">
   >;
-  selectedTool: null | "timer" | "timetracker" | "flashcards";
+  selectedTool: null | "timer" | "timetracker" | "flashcards" | "todo";
 };
 
 export default function StudySectionsNavbar({
@@ -26,7 +26,7 @@ export default function StudySectionsNavbar({
 
   return (
     <div>
-      <div className="flex h-[120px] items-center justify-around gap-[5px] bg-gray-200 px-4 sm:px-16">
+      <div className="sm:px-18 flex h-[120px] items-center justify-center gap-8 bg-gray-200 px-4 md:gap-24 lg:gap-36">
         <a
           className={`rounded p-3 hover:bg-gray-300 ${
             selectedTool === "timer" ? "bg-gray-300" : undefined
@@ -51,6 +51,15 @@ export default function StudySectionsNavbar({
           onClick={handleFlashCards}
         >
           Flashcards
+        </a>
+        <a
+          className={`rounded p-3 hover:bg-gray-300 ${
+            selectedTool === "todo" ? "bg-gray-300" : undefined
+          }`}
+          href="/todo"
+          onClick={handleFlashCards}
+        >
+          To-Do
         </a>
       </div>
     </div>

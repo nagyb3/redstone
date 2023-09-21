@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 
 type EditFlashCardProps = {
   setSelectedTool: React.Dispatch<
-    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
+    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null | "todo">
   >;
-  selectedTool: null | "timer" | "timetracker" | "flashcards";
+  selectedTool: null | "timer" | "timetracker" | "flashcards" | "todo";
 };
 
 export default function EditFlashCard({ setSelectedTool }: EditFlashCardProps) {

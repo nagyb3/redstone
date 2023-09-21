@@ -3,9 +3,9 @@ import StudySectionsNavbar from "./StudySectionsNavbar";
 
 type TimeTrackerProps = {
   setSelectedTool: React.Dispatch<
-    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
+    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null | "todo">
   >;
-  selectedTool: null | "timer" | "timetracker" | "flashcards";
+  selectedTool: null | "timer" | "timetracker" | "flashcards" | "todo";
 };
 
 export default function TimeTracker({
@@ -51,7 +51,7 @@ export default function TimeTracker({
         selectedTool={selectedTool}
         setSelectedTool={setSelectedTool}
       />
-      <h1 className="font-sembol m-16 text-center text-2xl">TimeTracker</h1>
+      <h1 className="m-16 text-center text-2xl">TimeTracker</h1>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex flex-col items-center gap-8"

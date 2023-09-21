@@ -3,9 +3,9 @@ import StudySectionsNavbar from "./StudySectionsNavbar";
 
 type TimeTrackerStatsProps = {
   setSelectedTool: React.Dispatch<
-    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null>
+    React.SetStateAction<"timer" | "timetracker" | "flashcards" | null | "todo">
   >;
-  selectedTool: null | "timer" | "timetracker" | "flashcards";
+  selectedTool: null | "timer" | "timetracker" | "flashcards" | "todo";
 };
 
 type TrackedTimesType = {

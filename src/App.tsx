@@ -12,6 +12,7 @@ import TimeTrackerStats from "./components/TimeTrackerStats";
 import InspectFlashCardPack from "./components/InspectFlashCardPack";
 import EditFlashCard from "./components/EditFlashCards";
 import StudyPack from "./components/StudyPack";
+import Todo from "./components/Todo";
 
 function App() {
   // useEffect(() => {
@@ -19,7 +20,7 @@ function App() {
   // });
 
   const [selectedTool, setSelectedTool] = useState<
-    null | "timer" | "timetracker" | "flashcards"
+    null | "timer" | "timetracker" | "flashcards" | "todo"
   >("timer");
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
@@ -96,6 +97,16 @@ function App() {
             path="/study/flashcards/packs/use"
             element={
               <StudyPack
+                selectedTool={selectedTool}
+                setSelectedTool={setSelectedTool}
+              />
+            }
+          />
+          <Route
+            path="/todo"
+            element={
+              <Todo
+                isLoggedIn={isLoggedIn}
                 selectedTool={selectedTool}
                 setSelectedTool={setSelectedTool}
               />
