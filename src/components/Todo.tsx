@@ -142,7 +142,13 @@ export default function Todo({
           <ul className="flex flex-col gap-4">
             {todoItemsList.map((todo) => {
               return (
-                <li key={todo._id}>
+                <li
+                  className="cursor-pointer"
+                  key={todo._id}
+                  onClick={() =>
+                    handleChangeTodoItemStatus(todo._id, !todo.is_done)
+                  }
+                >
                   <div className="flex justify-between gap-8 rounded border-2 border-black bg-gray-200 p-3">
                     <p className={todo.is_done ? "line-through" : undefined}>
                       {todo.text}
