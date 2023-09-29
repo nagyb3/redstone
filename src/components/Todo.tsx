@@ -113,29 +113,8 @@ export default function Todo({
         selectedTool={selectedTool}
         setSelectedTool={setSelectedTool}
       />
-      <h1 className="m-16 text-center text-2xl">Your current todo list: </h1>
-      <form
-        onSubmit={(e) => handleSubmitTodoItem(e)}
-        className="flex flex-col items-center gap-4"
-      >
-        <label htmlFor="new-todo">New element:</label>
-        <input
-          className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex
-            h-10 rounded border-[1px] border-black p-1 px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          type="text"
-          id="new-todo"
-          placeholder="Element's name.."
-          onChange={(e) => setNewTodoState(e.target.value)}
-          value={newTodoState}
-        />
-        <input
-          type="submit"
-          value="Enter"
-          className="text-kg rounded border-[1px] border-black bg-blue-700 p-2 text-white"
-        />
-      </form>
+      <h1 className="m-8 text-center text-2xl">Your current todo list: </h1>
       <div className="flex flex-col items-center">
-        <h1 className="m-8 text-lg">Your todo items:</h1>
         {todoItemsList !== null &&
         todoItemsList.length !== 0 &&
         todoItemsList !== null ? (
@@ -143,7 +122,7 @@ export default function Todo({
             {todoItemsList.map((todo) => {
               return (
                 <li
-                  className="cursor-pointer"
+                  className="cursor-pointer shadow"
                   key={todo._id}
                   onClick={() =>
                     handleChangeTodoItemStatus(todo._id, !todo.is_done)
@@ -167,6 +146,25 @@ export default function Todo({
           <p>You don&apos;t have any todo items yet...</p>
         )}
       </div>
+      <form
+        onSubmit={(e) => handleSubmitTodoItem(e)}
+        className="m-8 flex flex-col items-center"
+      >
+        <input
+          className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring m-4 flex h-10
+            rounded border-2 border-black p-1 px-3 py-2 text-sm shadow file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          type="text"
+          id="new-todo"
+          placeholder="Add a new element.."
+          onChange={(e) => setNewTodoState(e.target.value)}
+          value={newTodoState}
+        />
+        <input
+          type="submit"
+          value="Enter"
+          className="text-kg rounded border-2 border-black bg-blue-700 p-2 text-white shadow"
+        />
+      </form>
     </div>
   );
 }
