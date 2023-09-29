@@ -52,10 +52,9 @@ export default function FlashCards({
         setSelectedTool={setSelectedTool}
       />
       <div className="flex flex-col items-center">
-        {/* <h1 className="mt-8 text-center text-2xl">Flash cards</h1> */}
         {isLoggedIn ? (
           <div className="flex flex-col items-center">
-            <p className="m-8 mt-16 text-2xl">Your flashcard packs:</p>
+            <p className="m-8 text-2xl">Your flashcard packs:</p>
             {thisUserFlashCardPacks?.length !== 0 ? (
               <ul className="flex list-disc flex-col gap-2">
                 {thisUserFlashCardPacks.map((flashCardPack) => {
@@ -77,8 +76,8 @@ export default function FlashCards({
                 You don&apos;t you have any packs yet!
               </p>
             )}
-            <button className="mt-12 rounded bg-black p-2 text-white">
-              <a href="/study/flashcards/create">Make a new pack</a>
+            <button className="mt-12 rounded border-2 border-black bg-white p-2 text-lg text-black shadow hover:relative hover:top-[1px] hover:underline">
+              <a href="/study/flashcards/create">Make a new pack -&gt;</a>
             </button>
           </div>
         ) : (

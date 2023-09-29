@@ -70,71 +70,75 @@ export default function CreateFlashCard() {
       <button className="m-4 underline">
         <a href="/study/flashcards">&lt;- Go back to flashcards</a>
       </button>
-      <h1 className="m-8 text-center text-xl font-bold">
+      <h1 className="m-4 text-center text-xl font-bold">
         Create a flash card pack
       </h1>
-      <div className="mb-8 flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center gap-4">
         <label htmlFor="pack-name" className="text-lg">
-          Name of the pack:
+          Name:
         </label>
         <input
           className="border-[1px] border-black p-2"
           type="text"
           name="pack-name"
           id="pack-name"
-          placeholder="Enter name for the pack..."
+          placeholder="Name of the pack..."
           onChange={(e) => handleNameChange(e)}
           value={nameState}
         />
       </div>
-      <div className="grid grid-cols-2 justify-items-center">
-        <div className="flex flex-col items-center gap-4">
-          <p className="m-4 text-xl font-bold">First Side</p>
-          {packState.map((elem, index) => {
-            return (
-              <input
-                placeholder="First side content"
-                className="border-[1px] border-black p-2"
-                type="text"
-                value={elem[0]}
-                onChange={(e) => handleInputChange(index, 0, e)}
-              />
-            );
-          })}
-        </div>
-        <div className="flex flex-col items-center gap-4">
-          <p className="m-4 text-xl font-bold">Second side</p>
-          {packState.map((elem, index) => {
-            return (
-              <input
-                placeholder="First side content"
-                className="border-[1px] border-black p-2"
-                type="text"
-                value={elem[1]}
-                onChange={(e) => handleInputChange(index, 1, e)}
-              />
-            );
-          })}
+      <div className="flex flex-col items-center">
+        <div className="mt-8 grid w-[50vw] max-w-[1000px] grid-cols-2 justify-items-center">
+          <div className="flex flex-col items-center gap-4">
+            <p className="m-4 text-xl font-bold">First Side</p>
+            {packState.map((elem, index) => {
+              return (
+                <input
+                  placeholder="First side content"
+                  className="border-[1px] border-black p-2"
+                  type="text"
+                  value={elem[0]}
+                  onChange={(e) => handleInputChange(index, 0, e)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex flex-col items-center gap-4">
+            <p className="m-4 text-xl font-bold">Second side</p>
+            {packState.map((elem, index) => {
+              return (
+                <input
+                  placeholder="First side content"
+                  className="border-[1px] border-black p-2"
+                  type="text"
+                  value={elem[1]}
+                  onChange={(e) => handleInputChange(index, 1, e)}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
       <div className="mt-16 flex flex-col items-center gap-4">
+        <div className="flex gap-4">
+          <button
+            className="rounded-lg border-2 border-black bg-white p-2 text-lg text-black hover:relative hover:top-[1px] hover:underline"
+            onClick={handleRemoveLastCard}
+          >
+            Remove Card -
+          </button>
+          <button
+            className="rounded-lg border-2 border-black bg-white p-2 text-lg text-black hover:relative hover:top-[1px] hover:underline"
+            onClick={handleAddExtraCard}
+          >
+            Add card +
+          </button>
+        </div>
         <button
-          className="rounded-xl bg-black p-2 text-white underline"
-          onClick={handleRemoveLastCard}
-        >
-          Remove last Card
-        </button>
-        <button
-          className="rounded-xl bg-black p-2 text-white underline"
-          onClick={handleAddExtraCard}
-        >
-          Add Extra card
-        </button>
-        <button
-          className="rounded bg-blue-700 p-4 text-white"
+          className="m-4 rounded border-2 border-black bg-blue-600 p-3 text-xl text-white hover:relative hover:top-[1px] hover:underline"
           onClick={handleSubmit}
         >
-          SUBMIT
+          Submit pack!
         </button>
       </div>
     </div>
