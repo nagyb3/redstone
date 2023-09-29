@@ -40,8 +40,6 @@ export default function InspectFlashCardPack({
       });
   }, []);
 
-  console.log(thisPack);
-
   return (
     <div>
       <StudySectionsNavbar
@@ -56,21 +54,30 @@ export default function InspectFlashCardPack({
       {thisPack !== undefined ? (
         <div>
           <p className="m-8 text-center text-xl">
-            Name of the pack: <span className="font-bold">{thisPack.name}</span>
+            Pack name: <span className="font-bold">{thisPack.name}</span>
           </p>
         </div>
       ) : undefined}
-      <div className="mt-24 flex justify-center gap-8">
-        <button className="rounded bg-blue-700 p-2 text-2xl text-white">
-          <a href={"/study/flashcards/packs/edit?packid=" + thisPack?._id}>
-            Edit this pack
-          </a>
-        </button>
-        <button className="rounded bg-blue-700 p-2 text-2xl text-white">
-          <a href={"/study/flashcards/packs/use?packid=" + thisPack?._id}>
+      <div className="mt-12 flex flex-col items-center justify-center gap-8">
+        <a
+          href={"/study/flashcards/packs/use?packid=" + thisPack?._id}
+          className="shadow-xl"
+        >
+          <button
+            className="rounded border-[1px] border-black bg-blue-800 p-2 text-2xl 
+          font-semibold text-white hover:relative hover:top-[1px] hover:underline"
+          >
             Study this pack
-          </a>
-        </button>
+          </button>
+        </a>
+        <a
+          href={"/study/flashcards/packs/edit?packid=" + thisPack?._id}
+          className="shadow-xl"
+        >
+          <button className="rounded border-[1px] border-black bg-blue-900 p-2 text-lg text-white">
+            Edit this pack
+          </button>
+        </a>
       </div>
     </div>
   );

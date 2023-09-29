@@ -72,6 +72,10 @@ export default function StudyPack({
   const [isAnswerRevealed, setIsAnswerRevealed] =
     React.useState<boolean>(false);
 
+  function handleFinishPack() {
+    window.location.href = "/study/flashcards";
+  }
+
   return (
     <div>
       <StudySectionsNavbar
@@ -79,7 +83,14 @@ export default function StudyPack({
         selectedTool={selectedTool}
       />
       {currentCard ? (
-        <div className="flex h-[calc(100vh-180px)] flex-col items-center justify-center gap-4">
+        <div className="mt-16 flex h-[calc(100vh-180px)] flex-col items-center gap-4">
+          <button
+            onClick={handleFinishPack}
+            className="focus:ring-blue-30 mb-24 rounded-lg border-[1px] border-black bg-white px-5
+       py-2.5 text-black underline hover:bg-gray-100 focus:outline-none focus:ring-4"
+          >
+            &lt;- Finish studying this card pack...
+          </button>
           <div
             id="card"
             className="border-[1px] border-black bg-gray-400 px-16 py-8 text-3xl"
