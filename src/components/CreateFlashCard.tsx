@@ -1,4 +1,6 @@
 import React from "react";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 export default function CreateFlashCard() {
   const [packState, setPackState] = React.useState<(string | undefined)[][]>([
@@ -66,7 +68,7 @@ export default function CreateFlashCard() {
   }
 
   return (
-    <div>
+    <div className="min-h-[calc(100vh-60px)] bg-[#232323] text-[#E8E8E8]">
       <button className="m-4 underline">
         <a href="/study/flashcards">&lt;- Go back to flashcards</a>
       </button>
@@ -77,8 +79,8 @@ export default function CreateFlashCard() {
         <label htmlFor="pack-name" className="text-lg">
           Name:
         </label>
-        <input
-          className="border-[1px] border-black p-2"
+        <Input
+          className="max-w-[400px] bg-[#232323] p-2"
           type="text"
           name="pack-name"
           id="pack-name"
@@ -88,14 +90,14 @@ export default function CreateFlashCard() {
         />
       </div>
       <div className="flex flex-col items-center">
-        <div className="mt-8 grid w-[50vw] max-w-[1000px] grid-cols-2 justify-items-center">
+        <div className="mt-8 grid w-[700px] max-w-[1000px] grid-cols-2 justify-items-center">
           <div className="flex flex-col items-center gap-4">
             <p className="m-4 text-xl font-bold">First Side</p>
             {packState.map((elem, index) => {
               return (
-                <input
+                <Input
                   placeholder="First side content"
-                  className="border-[1px] border-black p-2"
+                  className="border-[1px] border-white bg-[#232323] p-2"
                   type="text"
                   value={elem[0]}
                   onChange={(e) => handleInputChange(index, 0, e)}
@@ -107,9 +109,9 @@ export default function CreateFlashCard() {
             <p className="m-4 text-xl font-bold">Second side</p>
             {packState.map((elem, index) => {
               return (
-                <input
+                <Input
                   placeholder="First side content"
-                  className="border-[1px] border-black p-2"
+                  className="border-[1px] border-white bg-[#232323] p-2"
                   type="text"
                   value={elem[1]}
                   onChange={(e) => handleInputChange(index, 1, e)}
@@ -121,25 +123,25 @@ export default function CreateFlashCard() {
       </div>
       <div className="mt-16 flex flex-col items-center gap-4">
         <div className="flex gap-4">
-          <button
-            className="rounded-lg border-2 border-black bg-white p-2 text-lg text-black hover:relative hover:top-[1px] hover:underline"
+          <Button
+            className="rounded-lg border-[1px] border-white bg-[#232323] p-2 text-lg text-white hover:relative hover:top-[1px] hover:underline"
             onClick={handleRemoveLastCard}
           >
             Remove Card -
-          </button>
-          <button
-            className="rounded-lg border-2 border-black bg-white p-2 text-lg text-black hover:relative hover:top-[1px] hover:underline"
+          </Button>
+          <Button
+            className="rounded-lg border-[1px] border-white bg-[#232323] p-2 text-lg text-white hover:relative hover:top-[1px] hover:underline"
             onClick={handleAddExtraCard}
           >
             Add card +
-          </button>
+          </Button>
         </div>
-        <button
-          className="m-4 rounded border-2 border-black bg-blue-600 p-3 text-xl text-white hover:relative hover:top-[1px] hover:underline"
+        <Button
+          className="m-4 rounded border-[1px] border-[#e8e8e8] bg-blue-800 p-3 text-xl text-white shadow-xl hover:relative hover:top-[1px] hover:bg-blue-900 hover:underline"
           onClick={handleSubmit}
         >
           Submit pack!
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
+import { Button } from "./ui/button";
 
 type StudyPackProps = {
   setSelectedTool: React.Dispatch<
@@ -77,23 +78,23 @@ export default function StudyPack({
   }
 
   return (
-    <div>
+    <div className="min-h-[calc(100vh-60px)] bg-[#232323] text-[#E8E8E8]">
       <StudySectionsNavbar
         setSelectedTool={setSelectedTool}
         selectedTool={selectedTool}
       />
       {currentCard ? (
         <div className="mt-16 flex h-[calc(100vh-180px)] flex-col items-center gap-4">
-          <button
+          <Button
+            variant="link"
             onClick={handleFinishPack}
-            className="focus:ring-blue-30 mb-24 rounded-lg border-[1px] border-black bg-white px-5
-       py-2.5 text-black underline hover:bg-gray-100 focus:outline-none focus:ring-4"
+            className="mb-16 text-[#E8E8E8]"
           >
             &lt;- Finish studying this card pack...
-          </button>
+          </Button>
           <div
             id="card"
-            className="border-[1px] border-black bg-gray-400 px-16 py-8 text-3xl"
+            className="border-[1px] border-black bg-gray-400 px-16 py-8 text-3xl text-black"
           >
             {isAnswerRevealed ? currentCard[0] : currentCard[1]}
           </div>

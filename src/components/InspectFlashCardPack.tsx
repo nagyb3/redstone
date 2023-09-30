@@ -41,7 +41,7 @@ export default function InspectFlashCardPack({
   }, []);
 
   return (
-    <div>
+    <div className="min-h-[calc(100vh-60px)] bg-[#232323] text-[#E8E8E8]">
       <StudySectionsNavbar
         selectedTool={selectedTool}
         setSelectedTool={setSelectedTool}
@@ -53,7 +53,7 @@ export default function InspectFlashCardPack({
       </button>
       {thisPack !== undefined ? (
         <div>
-          <p className="m-8 text-center text-xl">
+          <p className="m-8 text-center text-2xl">
             Pack name: <span className="font-bold">{thisPack.name}</span>
           </p>
         </div>

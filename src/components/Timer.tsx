@@ -38,7 +38,7 @@ export default function Timer({
         setShowSubmitToTracked(false);
       }
     }
-    let interval: number;
+    let interval: NodeJS.Timeout;
     if (isRunning) {
       interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1);

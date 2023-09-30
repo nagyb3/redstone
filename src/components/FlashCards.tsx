@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
+import { Button } from "./ui/button";
 
 type FlashCardsProps = {
   setSelectedTool: React.Dispatch<
@@ -46,7 +47,7 @@ export default function FlashCards({
   }, []);
 
   return (
-    <div>
+    <div className="min-h-[calc(100vh-60px)] bg-[#232323] text-[#E8E8E8]">
       <StudySectionsNavbar
         selectedTool={selectedTool}
         setSelectedTool={setSelectedTool}
@@ -54,7 +55,7 @@ export default function FlashCards({
       <div className="flex flex-col items-center">
         {isLoggedIn ? (
           <div className="flex flex-col items-center">
-            <p className="m-8 text-2xl">Your flashcard packs:</p>
+            <p className="m-8 mt-16 text-2xl">Your flashcard packs:</p>
             {thisUserFlashCardPacks?.length !== 0 ? (
               <ul className="flex list-disc flex-col gap-2">
                 {thisUserFlashCardPacks.map((flashCardPack) => {
@@ -76,9 +77,9 @@ export default function FlashCards({
                 You don&apos;t you have any packs yet!
               </p>
             )}
-            <button className="mt-12 rounded border-2 border-black bg-white p-2 text-lg text-black shadow hover:relative hover:top-[1px] hover:underline">
+            <Button className="m-8 border-[1px] border-white hover:underline">
               <a href="/study/flashcards/create">Make a new pack -&gt;</a>
-            </button>
+            </Button>
           </div>
         ) : (
           <div>
