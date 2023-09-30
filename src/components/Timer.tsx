@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
+import { Button } from "./ui/button";
 
 type TimerProps = {
   setSelectedTool: React.Dispatch<
@@ -126,58 +127,58 @@ export default function Timer({
       />
 
       <div
-        className={`flex h-[calc(100vh-180px)] flex-col items-center justify-center gap-8 pb-16 transition-[background-color] duration-500 ${
+        className={`flex h-[calc(100vh-180px)] flex-col items-center justify-center gap-8 bg-[#232323] pb-16 transition-[background-color] duration-500 ${
           isRunning ? "bg-blue-200" : undefined
         } ${showSubmitToTracked ? "bg-orange-200" : undefined}`}
       >
         <div className="flex gap-4">
-          <button
-            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+          <Button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-[#E8E8E8] shadow-xl hover:bg-blue-900"
             onClick={handleMinusOne}
           >
             -1
-          </button>
-          <button
-            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+          </Button>
+          <Button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-[#E8E8E8] shadow-xl hover:bg-blue-900"
             onClick={handleMinusFive}
           >
             -5
-          </button>
-          <button
-            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+          </Button>
+          <Button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-[#E8E8E8] shadow-xl hover:bg-blue-900"
             onClick={handlePlusFive}
           >
             +5
-          </button>
-          <button
-            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-white"
+          </Button>
+          <Button
+            className="rounded bg-blue-800 px-3 py-2 text-xl tracking-wider text-[#E8E8E8] shadow-xl hover:bg-blue-900"
             onClick={handlePlusOne}
           >
             +1
-          </button>
+          </Button>
         </div>
-        <p className="text-8xl sm:text-9xl">
+        <p className="text-8xl text-[#E8E8E8] sm:text-9xl">
           {minutes.toString().padStart(2, "0")}:
           {seconds.toString().padStart(2, "0")}
         </p>
         <div className="flex gap-8">
-          <button
-            className="rounded bg-green-800 p-3 text-xl font-bold tracking-wider text-white"
+          <Button
+            className="rounded border-[1px] border-white bg-green-800 p-6 text-3xl font-bold tracking-wider text-[#E8E8E8] shadow-xl"
             onClick={handleStart}
           >
             {isRunning ? "STOP" : "START"}
-          </button>
-          <button
-            className="rounded bg-red-800 p-3 text-xl font-bold tracking-wider text-white"
+          </Button>
+          <Button
+            className="rounded border-[1px] border-white bg-red-800 p-6 text-3xl font-bold tracking-wider text-[#E8E8E8] shadow-xl"
             onClick={handleReset}
           >
             RESET
-          </button>
+          </Button>
         </div>
         {showSubmitToTracked && isLoggedIn ? (
           <button
             onClick={handleAddToTracked}
-            className="mt-4 rounded bg-orange-800 p-2 text-2xl text-white underline"
+            className="mt-4 rounded bg-orange-800 p-2 text-2xl text-[#E8E8E8] underline"
           >
             Add to tracked times!
           </button>

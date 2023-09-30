@@ -1,21 +1,19 @@
+import { Button } from "./ui/button";
+
 export default function LandingPage() {
   return (
     <div>
-      <div className="flex flex-col items-center">
+      <div className="flex min-h-[calc(100vh-60px)] flex-col items-center bg-[rgb(35,35,35)] text-[#E8E8E8]">
         <h1 className="mt-24 px-4 text-center text-2xl md:text-4xl">
           All the tools to study at maximum efficiency.
         </h1>
-        <p className="m-8 max-w-[500px] text-center text-gray-700">
+        <p className="m-8 max-w-[500px] text-center text-gray-200">
           Can&apos;t focus while studying? Now you access all the tools you
           might need to study from this simple page.
         </p>
-        <button
-          className="m-4 rounded-lg bg-black px-5 py-2.5 text-base
-       font-medium text-white hover:bg-gray-800 focus:outline-none
-        focus:ring-4 focus:ring-blue-300 dark:hover:bg-gray-800 dark:focus:ring-gray-400"
-        >
+        <Button className="border-[1px] border-white p-6 text-xl text-[#E8E8E8] shadow-xl">
           <a href="/study/timer">Start Studying!</a>
-        </button>
+        </Button>
       </div>
     </div>
   );
