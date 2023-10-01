@@ -130,13 +130,17 @@ export default function Todo({
                     handleChangeTodoItemStatus(todo._id, !todo.is_done)
                   }
                 >
-                  <div className="flex justify-between gap-8 rounded border-2 border-black bg-gray-200 p-3 text-black">
-                    <p className={todo.is_done ? "line-through" : undefined}>
+                  <div className="flex justify-between gap-8 rounded-lg border-2 border-black bg-gray-200 p-3 text-black">
+                    <p
+                      className={`text-lg ${
+                        todo.is_done ? "line-through" : undefined
+                      }`}
+                    >
                       {todo.text}
                     </p>
                     <div
                       className={`h-[30px] w-[30px] rounded-full ${
-                        todo.is_done ? "bg-green-500" : "bg-red-500"
+                        todo.is_done ? "bg-green-600" : "bg-red-600"
                       } }`}
                     ></div>
                   </div>
