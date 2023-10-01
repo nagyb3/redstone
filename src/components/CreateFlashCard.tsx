@@ -92,25 +92,28 @@ export default function CreateFlashCard() {
       <div className="flex flex-col items-center">
         <div className="mt-8 grid w-[700px] max-w-[1000px] grid-cols-2 justify-items-center">
           <div className="flex flex-col items-center gap-4">
-            <p className="m-4 text-xl font-bold">First Side</p>
+            <p className="m-4 text-xl font-bold">Front Side</p>
             {packState.map((elem, index) => {
               return (
-                <Input
-                  placeholder="First side content"
-                  className="border-[1px] border-white bg-[#232323] p-2"
-                  type="text"
-                  value={elem[0]}
-                  onChange={(e) => handleInputChange(index, 0, e)}
-                />
+                <div className="flex items-center gap-4">
+                  <p className="min-w-fit">{index + 1}. card:</p>
+                  <Input
+                    placeholder="Front side"
+                    className="border-[1px] border-white bg-[#232323] p-2"
+                    type="text"
+                    value={elem[0]}
+                    onChange={(e) => handleInputChange(index, 0, e)}
+                  />
+                </div>
               );
             })}
           </div>
           <div className="flex flex-col items-center gap-4">
-            <p className="m-4 text-xl font-bold">Second side</p>
+            <p className="m-4 text-xl font-bold">Back side</p>
             {packState.map((elem, index) => {
               return (
                 <Input
-                  placeholder="First side content"
+                  placeholder="Back side"
                   className="border-[1px] border-white bg-[#232323] p-2"
                   type="text"
                   value={elem[1]}

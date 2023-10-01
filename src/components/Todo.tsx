@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StudySectionsNavbar from "./StudySectionsNavbar";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 type TodoProps = {
   setSelectedTool: React.Dispatch<
@@ -128,7 +130,7 @@ export default function Todo({
                     handleChangeTodoItemStatus(todo._id, !todo.is_done)
                   }
                 >
-                  <div className="flex justify-between gap-8 rounded border-2 border-black bg-gray-200 p-3">
+                  <div className="flex justify-between gap-8 rounded border-2 border-black bg-gray-200 p-3 text-black">
                     <p className={todo.is_done ? "line-through" : undefined}>
                       {todo.text}
                     </p>
@@ -146,25 +148,26 @@ export default function Todo({
           <p>You don&apos;t have any todo items yet...</p>
         )}
       </div>
-      <form
-        onSubmit={(e) => handleSubmitTodoItem(e)}
-        className="m-8 flex flex-col items-center"
-      >
-        <input
-          className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring m-4 flex h-10
-            rounded border-2 border-black p-1 px-3 py-2 text-sm shadow file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          type="text"
-          id="new-todo"
-          placeholder="Add a new element.."
-          onChange={(e) => setNewTodoState(e.target.value)}
-          value={newTodoState}
-        />
-        <input
-          type="submit"
-          value="Enter"
-          className="text-kg rounded border-2 border-black bg-blue-700 p-2 text-white shadow"
-        />
-      </form>
+      <div className="my-16 flex flex-col items-center">
+        <form onSubmit={(e) => handleSubmitTodoItem(e)} className="">
+          <Label htmlFor="new-todo">New To-Do element:</Label>
+          <div className="flex gap-4">
+            <Input
+              className="max-w-[400px] bg-[#232323] p-2"
+              type="text"
+              id="new-todo"
+              placeholder="Element name..."
+              onChange={(e) => setNewTodoState(e.target.value)}
+              value={newTodoState}
+            />
+            <input
+              type="submit"
+              value="Enter"
+              className="text-kg cursor-pointer rounded border-[1px] border-black bg-blue-700 p-2 text-white"
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
